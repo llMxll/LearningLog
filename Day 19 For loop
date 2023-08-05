@@ -1,0 +1,10 @@
+total = 1000
+initial = total
+year = 0
+for counter in range(10):
+  total = 1.05*total
+  rounded = round(total,2)
+  year += 1
+  print("after", year, "years you owe", rounded)
+interest = total-initial
+print("you have accrued $", interest, "in intrest")
