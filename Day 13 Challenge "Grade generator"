@@ -1,0 +1,17 @@
+total = float(input("What was the test scored out of?: "))
+mark = float(input("what was your score?: "))
+percent = mark/total*100
+if percent >= 90:
+  grade = "A+"
+elif percent >= 80:
+  grade = "A"
+elif percent >= 70:
+  grade = "B"
+elif percent >= 60:
+  grade = "C"
+elif percent >= 50:
+  grade = "D"
+else:
+  grade = "U"
+
+print("You got a ", grade, " with ", percent, "% of the possible marks")
