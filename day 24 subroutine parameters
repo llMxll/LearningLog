@@ -1,0 +1,13 @@
+print("Lets roll a dice")
+sides = int(input("how many sides would you like?: "))
+again = "yes"
+
+def rolldice (max):
+  import random
+  roll = random.randint(1,max)
+  print(roll)
+
+while again == "yes":
+  rolldice(sides)
+  again = input("roll it again?: ")
+  
