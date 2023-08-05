@@ -1,0 +1,9 @@
+triangle = input("do you have a right angle triangle? ")
+if triangle == "yes":
+  angle = input("do you know or need to find an angle? ")
+  if angle == "yes":
+    print("thats totally trig")
+  else:
+    print("thats pythag bro")
+else:
+  print ("its not Trig nor pythag")
