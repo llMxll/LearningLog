@@ -1,0 +1,19 @@
+import random
+
+mysecretnum = random.randint(1, 1000000000)
+attempts = 1
+while True:
+  Guess = float(input("Guess my number!" ))
+  if Guess < 0:
+    exit()
+  elif Guess == mysecretnum:
+    break
+  elif Guess < mysecretnum:
+    print("Too low")
+    attempts += 1
+    continue
+  else:
+    print("Too high")
+    attempts +=1
+    continue
+print("What! it only took you", attempts, "tries, You must have cheated! Good BYE DX")
