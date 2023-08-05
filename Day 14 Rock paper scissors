@@ -1,0 +1,24 @@
+from getpass import getpass as input
+first = input("First player type R for rock, P for paper or S for scissors")
+second = input("Second player type R for rock, P for paper or S for scissors")
+if first == "R":
+  if second == "R":
+    print
+  elif second == "P":
+    print("Second player wins")
+  else:
+    print("Player 1 wins")
+elif first == "P":
+  if second == "R":
+     print("Player 1 wins")
+  elif second == "P":
+    print("Draw!")
+  else:
+    print("Second player wins")
+else:
+  if second == "R":
+     print("Player 2 wins")
+  elif second == "P":
+    print("Player 1 wins")
+  else:
+    print("Draw!")
