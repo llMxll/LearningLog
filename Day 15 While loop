@@ -1,0 +1,4 @@
+while exit != "no":
+  animal = input("name an animal: ")
+  print(animal+"s are ok I guess")
+  exit = input("want to try another animal?: ")
