@@ -1,0 +1,22 @@
+while True:
+  points = 0
+  set = int(input("Which timetables will we practice today? select 1-10: "))
+  for i in range (1, 11, 1):
+    print("What is", i, "x", set, "?")
+    ans = float(input(""))
+    print("")
+    correct = i*set
+    if ans == correct:
+      points += 1
+      print("Awesome!")
+    else:
+      print("Nope, it was", correct, "but try another")
+  if points == 10:
+    print("You got 10 points! Thats a perfect score!!")
+  else:
+    print("you got", points, "correct")   
+    more = input("would you like to do more? (yes/no)")
+    if more == "no":
+      break
+    else:
+      continue
