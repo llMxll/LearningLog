@@ -1,0 +1,11 @@
+spider=input("Do you like 'hanging around'?: ")
+if spider == "yes":
+  print("\u001B[31m", "You spooderman")
+else:
+  Krog = input("Are you Krog? ")
+  if Krog == "yes":
+     print("\u001B[31m", "You Krong")
+  else:
+    marvel = input("Are you marvel? ")
+    if marvel == "yes":
+     print("\u001B[31m", "You marvel")
