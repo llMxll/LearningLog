@@ -1,0 +1,13 @@
+name = input("whats your name: ")
+date = input("whats the date: ")
+if name == "Dave" or name == "dave":
+  if date == "1":
+    print("you can do it", name)
+  elif date == "2":
+    print("dont give up", name)
+  elif date == "3":
+    print("somthing affirmitive", name)
+  else:
+    print("affirmitive number", date)
+else:
+  print("who you noob?")
