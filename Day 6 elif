@@ -1,0 +1,10 @@
+user = input("Enter username: ")
+passw = input("Enter password: ")
+if user == "Mx" and passw == "1":
+  print ("Howdy")
+elif user == "Dog" and passw == "2":
+  print ("woof")
+elif user == "Cat" and passw == "3":
+  print ("meow")
+else:
+  print ("buzz off")
