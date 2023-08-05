@@ -1,0 +1,22 @@
+counter = 0
+while True:
+  print("fill in the lyrics:")
+  print("Never going to ______ you up.")
+  response = input()
+  if response == "give":
+    counter += 1
+    break
+  else:
+    counter += 1
+    print("incorrect, try again")
+while True:
+  print("fill in the lyrics:")
+  print("Never going to ______ you down.")
+  response = input()
+  if response == "let":
+    counter += 1
+    break
+  else:
+    counter += 1
+    print("incorrect, try again")
+print("you required", counter, "attempts to complete this") 
