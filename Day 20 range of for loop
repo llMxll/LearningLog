@@ -1,0 +1,6 @@
+start = int(input("Number to start with: "))
+end = int(input("Number to end at: "))
+incriments = int(input("How much to count by: "))
+for i in range (start, end, incriments):
+  print(i)
+print(i+incriments)
