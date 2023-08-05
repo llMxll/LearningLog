@@ -1,0 +1,18 @@
+year = int(input("What year were you born: "))
+print()
+print("you are...")
+if year > 2015:
+  print("too young")
+elif year <= 2015 and year >= 1996:
+  print ("Gen Z")
+elif year <=1995 and year >= 1982:
+  print ("millenium falcon")
+elif year <=1981 and year >= 1965:
+  print("Gen X")
+elif year <=1964 and year >= 1947:
+  print("Baby boomer")
+elif year <=1946 and year >=1925:
+  print("Traditional")
+else:
+  print("old")
+  
