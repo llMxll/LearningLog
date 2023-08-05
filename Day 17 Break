@@ -1,0 +1,64 @@
+from getpass import getpass as input
+score1 = 0
+score2 = 0
+while True:
+  if score1 == 3:
+    print("player 1 wins")
+    exit()
+  elif score2 == 3:
+    print("player 2 wins")
+    exit()
+  else:
+    first = input("First player type R for rock, P for paper or S for scissors")
+    second = input("Second player type R for rock, P for paper or S for scissors")
+    if first == "R":
+      if second == "R":
+        print("Draw!")
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+      elif second == "P":
+        print("Second player wins")
+        score2 += 1
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+      else:
+        print("Player 1 wins")
+        score1 += 1
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+    elif first == "P":
+      if second == "R":
+        print("Player 1 wins")
+        score1 += 1
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+      elif second == "P":
+        print("Draw!")
+      else:
+        print("Second player wins")
+        score2 += 1
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+    else:
+      if second == "R":
+        print("Player 2 wins")
+        score2 += 1
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+      elif second == "P":
+        print("Player 1 wins")
+        score1 += 1
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
+      else:
+        print("Draw!")
+        print("player one's score is:", score1)
+        print("player two's score is:", score2)
+        continue
