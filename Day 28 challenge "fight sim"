@@ -1,0 +1,121 @@
+import os, time, random
+from replit import audio
+
+repeat = "y"
+print("Welcome to your character builder")
+
+#Subroutines
+
+def rolldie(sides):
+  die = random.randint(1,sides)
+  return die
+  
+def rollhp():
+  hp = (rolldie(6)*rolldie(12))/2+10
+  return(hp)
+  
+def rollstr():
+  str = (rolldie(6)*rolldie(12))/2+12
+  return(str)
+
+def strike():
+  init1 = rolldie(6)
+  init2 = rolldie(6)
+  if init1 > init2:
+    initwin = "1"
+  elif init2 < init1:
+    initwin = "2"
+  else:
+    initwin = "3"
+  return(initwin)
+
+#Start of process
+
+while repeat == "y":
+
+  os.system("clear")
+  name = input("Name your character: ")
+  race = input("select your race (human, imp, wizard, elf, etc): ")
+  os.system("clear")
+  print ("your character is", name, "a mighty", race)
+
+  os.system("clear")
+  print("generating stats for", name)
+  time.sleep(1)
+  
+  os.system("clear")
+  hp1 = rollhp()
+  str1 = rollstr()
+  print(name)
+  print("HEALTH:", hp1)
+  print("STRENGTH", str1)
+  print("")
+  print("Try not to die on your first day..")
+  time.sleep(2)
+  
+  os.system("clear")
+  print("generating stats for your challenger")
+  time.sleep(1)
+
+  os.system("clear")
+  hp2 = rollhp()
+  str2 = rollstr()
+  print("Challenger")
+  print("HEALTH:", hp2)
+  print("STRENGTH", str2)
+  print("")
+  print("Try not to die on your first day..")
+  time.sleep(2)
+  os.system("clear")
+
+# Fight starts here
+  print("!!FIGHT!!")
+  print("")
+  round = 0
+  
+  while hp1 > 0 and hp2 > 0:
+  
+    damage = abs(str1 - str2)+1
+    initwin = strike()
+    round += 1
+    
+    if initwin == "1":
+      hp2 -= damage
+      print ("\033[32m", name, "strikes the challenger for", damage, "damage")
+      
+    elif initwin == "2":
+      hp1 -= damage
+      print ("\033[31m","The Challenger strikes", name,  "the challenger for", damage, "damage")
+
+    else:
+      print ("They are unable to land a hit!")
+      
+    print("\033[37m","")
+    time.sleep(1)
+    print (name)
+    print (hp1)
+    print("")
+    time.sleep(1)
+    print ("Challenger")
+    print (hp2)
+    time.sleep(2)
+    
+    if hp1 > 0 and hp2 > 0:
+      print("Both fighters survive to another round!")
+      os.system("clear")
+      print("The battle continues")
+      time.sleep(1)
+
+    print("")
+
+  if hp1 <= 0:
+    print ("You have been bested by the challenger, Better luck next time")
+    print ("you held out for", round, "rounds")
+  else:
+    print ("Sweet victory! your challenger's family cry in the stands")
+    print ("you defeated them in", round, "rounds")
+
+  print("")
+  repeat = input("would you like to go again? (y/n): ")
+  if repeat == "n":
+    break
