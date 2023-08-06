@@ -1,0 +1,9 @@
+print("30 Days Down")
+print("Write what you though of each day..")
+print("")
+for i in range(1,31):
+  print (f"Day {i}")
+  reflection = input(": ")
+  mytext = f"you thought Day {i} was {reflection}"
+  print(f"{mytext: ^35}")
+  print("")
