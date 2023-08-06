@@ -1,0 +1,43 @@
+from replit import audio
+import os, time
+def play():
+  source = audio.play_file('audio.wav')
+  source.paused = False # unpause the playback
+  while True:
+    # Start taking user input and doing something with it
+    stop = int(input("Press 2 anytime to stop playback and go back to the menu : ")) # giving the user the option to stop playback
+    if stop == 2:
+      source.paused = True
+      return
+    else: 
+      continue
+    
+while True:
+  # clear the screen
+  os.system("clear")
+  # Show the menu
+  print("MUSIC PLAYER")
+  print("")
+  print("type 1 to play:")
+  print("type 2 to exit:")
+  print("type any other key to return to menu:")
+  
+  # take user's input
+  menu = input("")
+  
+  # check whether you should call the play() subroutine depending on user's input
+  if menu == "1":
+    print("")
+    print("playing...")
+    time.sleep(1)
+    menu=play()
+  elif menu == "2":
+    print("")
+    print("attempting to exit")
+    time.sleep(1)
+    exit()
+  else:
+    print("returning to menu...")
+    time.sleep(1)
+    continue
+    
