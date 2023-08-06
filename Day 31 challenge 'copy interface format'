@@ -1,0 +1,51 @@
+def enter(rows):
+    for i in range (rows):
+      print("")
+def purple():
+    return("\033[35m")
+def red():
+    return("\033[31m")
+def cyan():
+    return("\033[36m")
+def yellow():
+    return("\033[93m")
+def default():
+    return("\033[0m")
+def green():
+    return("\033[32m")
+
+text = f"{red()}={default()}={cyan()}={yellow()} Music App {cyan()}={default()}={red()}="
+print(f"{text:^100}")
+text = f"{default()}\t Radio Gaga"
+print(f"{text:}")
+text = f"{yellow()}\t Queen"
+print(f"{text:}")
+enter(2)
+text = f"{default()} PREV"
+print(f"{text:}")
+text = f"{green()}\t NEXT"
+print(f"{text:}")
+text = f"{purple()}\t \t PAUSE"
+print(f"{text:}")
+
+enter(2)
+print(default(), "---------------------------------------------")
+text = f"{default()} WELCOME TO"
+print(f"{text:^80}")
+text = f"{cyan()} --   ARMBOOK   --"
+print("")
+print(f"{text:^80}")
+text = f"{yellow()}Definitely not a rip off of"
+print(f"{text:>80}")
+text = f"{yellow()}a certain other social"
+print(f"{text:>80}")
+text = f"{yellow()}networking site"
+print(f"{text:>80}")
+print("")
+text = f"{red()}Honest."
+print(f"{text:^80}")
+print("")
+text = f"{default()}Username:"
+print(f"{text:^80}")
+text = f"{default()}Password:"
+print(f"{text:^80}")
