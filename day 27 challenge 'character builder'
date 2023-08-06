@@ -1,0 +1,40 @@
+import os, time, random
+
+repeat = "y"
+print("Welcome to your character builder")
+
+def rolldie(sides):
+  die = random.randint(1,sides)
+  return die
+def rollhp():
+  hp = (rolldie(6)*rolldie(12))/2+10
+  return(hp)
+def rollstr():
+  str = (rolldie(6)*rolldie(12))/2+12
+  return(str)
+
+while repeat == "y":
+  sure = "n"
+  while sure == "n":
+    os.system("clear")
+    name = input("Name your character: ")
+    race = input("select your race (human, imp, wizard, elf, etc): ")
+    os.system("clear")
+    print ("your character is", name, "a mighty", race)
+    sure = input("is this correct? (y/n): " )
+
+  os.system("clear")
+  print("generating stats for", name)
+  time.sleep(2)
+  
+  os.system("clear")
+  print(name)
+  print("HEALTH:", rollhp())
+  print("STRENGHT", rollstr())
+  print("")
+  print("Try not to die on your first day..")
+  print("")
+  repeat = input("would you like to build another? (y/n): ")
+  if repeat == "n":
+    break
+    
