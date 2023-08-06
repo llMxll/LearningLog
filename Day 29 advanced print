@@ -1,0 +1,51 @@
+# new line \n
+# tab indent \t
+# vertical tab \v
+# end = "" controls what is between prints
+# sep = "" controls what is beween concatenations
+#"\033[__" gives commands 
+      #0m = defult
+      #1m to 4m = bold, faint, italic, underline
+      #30m to 37m = basic colors
+      #90m to 96m = other colors
+      #?25l turns off cursor
+      #?25h turns on cursor
+
+        #black = '\033[30m'
+        #red = '\033[31m'
+        #green = '\033[32m'
+        #orange = '\033[33m'
+        #blue = '\033[34m'
+        #purple = '\033[35m'
+        #cyan = '\033[36m'
+        #lightgrey = '\033[37m'
+        #darkgrey = '\033[90m'
+        #lightred = '\033[91m'
+        #lightgreen = '\033[92m'
+        #yellow = '\033[93m'
+        #lightblue = '\033[94m'
+        #pink = '\033[95m'
+        #lightcyan = '\033[96m'
+
+def color(text, Color):
+  if Color == "purple":
+    print("\033[35m", text, end=" ")
+  if Color == "red":
+    print("\033[31m", text, end=" ")
+  if Color == "cyan":
+    print("\033[36m", text, end=" ")
+  if Color == "yellow":
+    print("\033[93m", text, end=" ")
+
+color("Super Subroutine", "yellow")
+print("\n", "\n")
+color("With my", "yellow")
+color("new program", "purple")
+color("I can just call", "yellow")
+color("and", "red")
+color("that word will appear in the color I set it to.", "yellow")
+print("\n", "\n")
+color("With no", "yellow")
+color("weird gaps", "cyan")
+print("\n", "\n")
+color("Epic", "yellow")
