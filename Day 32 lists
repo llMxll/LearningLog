@@ -1,0 +1,3 @@
+import random
+greetingslist = ["hey", "hi", "howdy", "What up", "Yo", "RAAA!"]
+print(f"{greetingslist[random.randint(0,5)]}.")
