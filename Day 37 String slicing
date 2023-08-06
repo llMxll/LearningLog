@@ -1,0 +1,13 @@
+def makeName(name):
+  firstName = name[0]
+  lastName = name[1]
+  Starname = f"{firstName[0:3:1]}{lastName[0:3:1]}"
+  return(Starname)
+  
+print("Get your star wars name!\n")
+name = input("Type in your first and last name:" ).split()
+Starname1 = makeName(name).capitalize()
+name = input("Type in your mothers first and last name:" ).split()
+Starname2 = makeName(name).capitalize()
+print("")
+print("Your starwars name is", Starname1, Starname2)
