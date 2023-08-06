@@ -1,0 +1,59 @@
+import os, time
+
+toDoList = []
+
+def printList():
+  for i in toDoList:
+    print(i)
+  print("")
+  time.sleep(1)
+
+while True:
+  print("To Do Management \n")
+  menu = input("Please select a number\n1. view list\n2. add item\n3. remove item\n4. edit item\n5. Delete entire list\n")
+  print("")
+  if menu == "1":
+    printList()
+  elif menu == "2":
+    item = input("What would you like to add: ")
+    if item in toDoList:
+      print("you already have that")
+    else:
+      toDoList.append(item)
+  elif menu == "3":
+    item = input("What would you like to remove?: ")
+    if item in toDoList:
+      print("Are you sure you wish to remove", item, "(y/n):")
+      check = input()
+      if check == "y":
+        toDoList.remove(item)
+      else:
+        print("Good thing we checked!")
+    else:
+      print("that is not on the list!")
+  elif menu == "4":
+    item = input("What would you like to change?: ")
+    if item in toDoList:
+      change = input("What would you like to change it to?: ")
+      if change in toDoList:
+        print("you already have that")
+      else:
+        print("Are you sure you wish to change", item, "to", change, "(y/n): ")
+        check = input()
+        if check == "y":
+          for i in range(0,len(toDoList)):
+           if toDoList[i]==item:
+             toDoList[i]=change
+        else:
+          print("Good thing we checked!")
+    else:
+      print("that is not on the list!")
+  elif menu == "5":
+    check = input("Are you sure you want to erase everything? (y/n) ")
+    if check == "y":
+      toDoList = []
+      print("... its all gone... you monster")
+    else:
+      print("Good thing we checked!")
+  time.sleep(1)
+  os.system("clear")
