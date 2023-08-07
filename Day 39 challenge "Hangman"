@@ -1,0 +1,84 @@
+import random, time, os
+
+listOfWords = ["british", "suave", "integrity", "accent", "evil", "genius", "Downton"]
+wordChosen = random.choice(listOfWords)
+chosenletters = []
+Choice = None
+death = 6
+
+while True:
+  print ("Lets play hangman!\n")
+  hiddenLetterCount = 0
+  
+  #Print word so far and count how many letters to go
+  for i in wordChosen:
+    if i.lower() in chosenletters:
+      print(i,"", end= "")
+    else:
+      print("_ ", end="")
+      hiddenLetterCount += 1
+
+  #Print guessed letters
+  print("\n")
+  print(f"So far you have guessed: {chosenletters}")
+
+  #ASCII Hangman
+  if death <= 0:
+    print ("  ___")
+  else:
+    print ("")
+  if death <= 1:
+    print (" |   |")
+  else:
+    print ("")
+  if death <= 2:
+    print (" O   |")
+  else:
+    print ("")
+  if death <= 3:
+    print ("/|\\  |")
+  else:
+    print ("")
+  if death <= 4:
+    print ("/ \\  |")
+  else:
+    print ("")
+  if death <= 5:
+    print ("__________")
+  else:
+    print ("")
+
+  #Check for win
+  if hiddenLetterCount == 0:
+    print("\n")
+    print(f"You guessed the word! and you had {death} guesses remaining... you must have cheated")
+    time.sleep(3)
+    quit()
+  else:
+    
+    #Guess letter, check for repeat and add to guessed list
+    print("\n")
+    choice = input("Guess a letter: ").strip().lower()
+  
+    if choice in chosenletters:
+      print ("you have already guessed that!, are you trying to lose?")
+    else:
+      chosenletters.append(choice)
+    
+      #Confirm reponse and increase death counter if neccissary
+      if choice in wordChosen:
+        print("Yes that is in there")
+    
+      else:
+        if death == 0:
+          print(f"you have been hung!, better luck in your next life... btw the word was {wordChosen}")
+          time.sleep(3)
+          quit()
+        else:
+          print("Oh no, 1 step closer to hanging!")
+          death -= 1
+          print(f"you only have {death} incorrect guesses left, make them count!")
+    
+  time.sleep(2)
+  os.system("clear")
+  
