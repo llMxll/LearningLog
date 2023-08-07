@@ -1,0 +1,15 @@
+Contact = {}
+
+print("Contact Card")
+
+Contact["name"] = input("Input your name > ")
+print("")
+Contact["dob"] = input("Input your date of birth > ")
+print("")
+Contact["phone"] = input("Input your telephone number > ")
+print("")
+Contact["email"] = input("Input your email > ")
+print("")
+Contact["address"] = input("Input your address > ")
+print("")
+print(f"Hi {Contact['name']}. Our dictionary says that you were born on {Contact['dob']}, we can call you on {Contact['phone']}, email {Contact['email']}, or write to {Contact['address']}")
