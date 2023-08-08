@@ -1,0 +1,25 @@
+mokebeast = {"name": None, "type": None, "special": None, "hp": None, "mp": None}
+
+print("Input your mokebeasts name, type, special move, Hp and Mp")
+info = input().split()
+
+print ("")
+
+x = 0
+for name, value in mokebeast.items():
+  mokebeast[name] = info[x].strip().capitalize()
+  x += 1
+
+if mokebeast["type"] == "Earth":
+  print("\033[32m")
+if mokebeast["type"] == "Fire":
+  print("\033[31m")
+if mokebeast["type"] == "Air":
+  print("\033[37m")  
+if mokebeast["type"] == "Water":
+  print("\033[34m")
+if mokebeast["type"] == "Spirit":
+  print("\033[93m")
+
+for name, value in mokebeast.items():
+  print(f"{name}: {value}")
