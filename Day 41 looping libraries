@@ -1,0 +1,9 @@
+Mydictionaty = {"name": None, "URL": None, "description": None, "rating": None}
+
+for name in Mydictionaty.items():
+  print(f"Input the websites {name}")
+  Mydictionaty[name] = input("")
+
+print()
+for item, value in Mydictionaty.items():
+  print(f"{item}: {value}")
