@@ -1,0 +1,66 @@
+import random, os, time
+
+randomList = []
+table = [[None, None, None],[None, None, None],[None, None, None] ]
+
+def printCard():
+  print("-----------------------------------------")
+  for row in table:
+    for i in row:
+      print(f"{i:^10}", end=" | ")
+    print("\n-----------------------------------------")
+  
+# Gen numbers
+for i in range (1, 9):
+  number = random.randint(1,99)
+  randomList.append(number)
+
+#Order numbers
+orderedList = []
+
+while randomList != []:
+  for i in randomList:
+    Smallest = True
+    for x in randomList:
+      if i > x:
+        Smallest = False
+    if Smallest == True:
+      orderedList.append(i)
+      randomList.remove(i)
+      continue
+
+#Make table
+row = 0
+column = 0
+for i in orderedList:
+  if row == 1 and column == 1:
+    table[row][column] = "BINGO"
+    column += 1
+
+  table[row][column] = i
+  column += 1
+  if column == 3:
+    column = 0
+    row += 1
+
+#Play game
+winCounter = 0
+while True:
+  printCard()
+  print("")
+
+  chosenNo = int(input("choose a number: "))
+  
+  for row in range(3):
+    for i in range(3):
+      if table[row][i] == chosenNo: 
+        table[row][i] = "X"
+        winCounter += 1
+
+    if winCounter == 8:  
+      print ("We have BINGO!")
+      exit()
+  
+  os.system("clear")
+  
+
