@@ -111,6 +111,8 @@ while True:
     edit()
   elif menuInput == "4": 
     remove()
+  else:
+    print("That is not a valid selection")
 
   #Hold then end loop
   print("")    
