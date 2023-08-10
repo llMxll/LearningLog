@@ -1,0 +1,46 @@
+import os
+
+mokedex = {}
+
+def customPrint():
+  print("")
+  print(f"{'name':^10}|{'Type':^10}|{'Special':^10}|{'HP':^10}|{'MP':^10}|")
+  
+  for key, value in mokedex.items():
+    
+    if value["type"] == "Earth":
+      print("\033[32m")
+    elif value["type"] == "Fire":
+      print("\033[31m")
+    elif value["type"] == "Air":
+      print("\033[37m")  
+    elif value["type"] == "Water":
+      print("\033[34m")
+    elif value["type"] == "Spirit":
+      print("\033[93m")
+    else:
+      print("\033[0m")
+    print(f"{key:^10}", end = "|")
+    for subkey, subvalue in value.items():
+      print(f"{subvalue:^10}", end="|")
+      
+  print("\033[0m")
+
+while True:
+  print("welcome to your MOKEDEX\n what mokemon have you discovered?\n")
+
+  name = input("Name: > ").strip().capitalize()
+  type = input("Type: > ").strip().capitalize()
+  spec = input("Special move: > ").strip().capitalize()
+  hp = input("Health: > ").strip().capitalize()
+  mp = input("Magic points: > ").strip().capitalize()
+
+  mokedex[name] = {"type":type,"spec":spec,"hp":hp,"mp":mp}
+  
+  customPrint()
+
+  print("")
+  menuNo = input("add another y/n")
+  if menuNo == "1":
+    exit()
+  os.system("clear")
