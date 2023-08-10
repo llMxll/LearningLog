@@ -1,0 +1,15 @@
+import os
+
+while True:
+  print("High Score Table")
+  initials = input("\n Initials: > ")
+  score = input("\n Score: > ")
+  
+  f = open("savedFile.txt", "a+")
+  f.write(f"{initials} {score}\n")
+  f.close()
+
+  cont = input("\n Input another score? (y/n)> ")
+  if cont == "n":
+    exit()
+  os.system("clear")
