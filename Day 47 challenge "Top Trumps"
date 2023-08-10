@@ -1,0 +1,47 @@
+import os, random
+
+character = {}
+character["Kirby"] = {"strength": 40, "speed": 50, "endurance": 100}
+character["Fox"] = {"strength": 35, "speed": 100, "endurance": 30}
+character["Donkey Kong"] = {"strength": 100, "speed": 10, "endurance": 70}
+character["Jiggly Puff"] = {"strength": 10, "speed": 10, "endurance": 10}
+
+def compare(player, npc, stat):
+  playerStat = character[player][stat]
+  npcStat = character[npc][stat]
+
+  print(f"\n{player}'s {stat}: {playerStat}")
+  print(f"{npc}'s {stat}: {npcStat}")
+  if playerStat > npcStat:
+    print(f"{player} wins! That's your character!")
+  elif npcStat > playerStat:
+    print(f"{npc} wins! Pick better next time!")
+  else:
+    print("It's a tie!")
+  
+
+def npcChoice():
+  random.chance(list(character.key()))
+
+while True:
+  print("""Weclome to Top Trumps Super Samsh!!
+  
+Choose your character:
+  Kirby
+  Fox
+  Donkey Kong
+  Jiggly Puff/n""")
+  player = input("> :").strip().title()
+
+  print("\n Choose a stat to commpare: Strength, Speed or Endurance")
+  stat = input("> ").strip().lower()
+
+  npc = npcChoice()
+  compare(player, npc, stat)
+
+  menu = input("\nplay again? (y/n) > ")
+  if menu == "n":
+    exit()
+  os.system("clear")
+  
+  
