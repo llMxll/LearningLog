@@ -1,0 +1,22 @@
+f = open("high.score", "r")
+scores = []
+
+while True:
+  
+  contents = f.readline().strip()   
+  
+  if contents == "":
+    break
+    
+  scores.append(contents.split())
+   
+highest = 0  
+for i in scores:
+  if highest < int((i[1])):
+    highest = int((i[1]))
+for i in scores:
+  if str(highest) in i:
+    print(f"""Current leader is {i[0]} with {i[1]}""")
+
+
+f.close()
