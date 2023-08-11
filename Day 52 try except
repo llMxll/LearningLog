@@ -1,0 +1,57 @@
+import os
+
+pizzaList = []
+
+try:
+  f = open("pizza.txt", "r")
+  pizzaList = eval(f.read())
+  f.close()
+except:
+  print ("Could not load pizza list")
+
+def addPizza():
+  try:
+    number = int(input("\n\nHow many pizza's? > ").strip())
+  except:
+    try:
+      number = int(input("please input a numerical number such as '1', '2' etc > "))
+    except:
+      print("\nFine, dont get a pizza then!")
+      number = 0
+      
+  size = input("\nWhat size? (Small, Medium or Large) > ").strip().capitalize()
+  if size == "Small":
+    valuePer = 6
+  elif size == "Medium":
+    valuePer = 9
+  elif size == "Large":
+    valuePer = 12
+  else:
+    valuePer = 0
+    print("\nYour selection is invalid")
+    
+  name = input("\nName please? > ").strip().capitalize()
+  cost = number*valuePer
+
+  if cost != 0:
+    pizza = [name, size, number, cost]
+    
+    pizzaList.append(pizza)
+    print(f"\nthanks {name}, your pizza(s) will cost ${cost}")
+
+def customPrint():
+  print(f"{'Name':^10}|{'Size':^10}|{'Number':^10}|{'Cost':^10}")
+  for pizza in pizzaList:
+    print("")
+    for detail in pizza:
+      print(f"{detail:^10}", end="|")
+
+while True:
+  customPrint()
+  addPizza()
+
+  f = open("pizza.txt", "w")
+  f.write(str(pizzaList))
+  f.close()
+  os.system("clear")
+  
