@@ -1,0 +1,48 @@
+import random, os, time
+
+f = open("my.ideas", "a+")
+f.close()
+
+def read():
+  f = open("my.ideas", "r")
+  ideas = []
+  
+  while True:
+    line = f.readline()
+    if line == (""):
+      break
+    ideas.append(line)
+  print(random.choice(ideas))
+  f.close()
+
+def write():
+  f = open("my.ideas", "a+")
+
+  print("Input your idea.")
+  idea = input("> ")
+  f.write(f"{idea}\n")
+
+  f.close()
+
+while True:
+  print("""Idea Storage
+  
+  1. Add an idea
+  2. See a random idea
+  3. exit
+  """)
+  menu = input("Select an option (1 - 3): > ")
+  print("")
+
+  if menu == "1":
+    write()
+  elif menu == "2":
+    read()
+  elif menu == "3":
+    exit()
+  else:
+    print ("that is not an option")
+    
+  time.sleep(1)
+  os.system("clear")
+    
