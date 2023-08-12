@@ -1,0 +1,66 @@
+import os, time
+
+inventory = []
+
+try:
+  f = open("Inventory", "r")
+  inventory = eval(f.read())
+  f.close()
+except:
+  pass
+
+def view():
+  os.system("clear")
+  displayed = []
+  print("Your current inventory:\n")
+  print(f"{'Item':>20} |{'Quantity':^8}\n")
+  for item in inventory:
+    if item not in displayed:
+      print (f"{item:>20} |{inventory.count(item):<5}")
+      displayed.append(item)
+  input("\n\n press enter to continue > ")
+
+def addItem():
+  itemToAdd = input("\nWhich item would you like to add? > ").strip().capitalize()
+  inventory.append(itemToAdd)
+
+def removeItem():
+  removed = False
+  itemToRemove = input("\nWhat item should be removed? > ").strip().capitalize()
+  for item in inventory:
+    if item == itemToRemove:
+      inventory.remove(item)
+      print("Item removed")
+      removed = True
+      break
+  if removed == False:
+    print("\nNo item found with that name")
+    time.sleep(2)
+
+while True:
+  print("""RPG Inventory
+
+  1: Add
+  2: Remove
+  3: View
+
+  Select an option:""")
+  menu = input("> ").strip().lower()
+  
+  if menu == "add" or menu == "1":
+    addItem()
+  
+  elif menu == "remove" or menu == "2":
+    removeItem()
+  
+  elif menu == "view" or menu == "3":
+    view()
+  else:
+    print("\n Please select a valid input")
+    time.sleep(2)
+  
+  f = open("Inventory", "w")
+  f.write(str(inventory))
+  f.close()
+  
+  os.system("clear")
