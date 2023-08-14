@@ -1,0 +1,18 @@
+import csv, os
+
+with open("100MostStreamedSongs.csv") as file:
+  music = csv.DictReader(file)
+  files = os.listdir()
+  if "Music" not in files:
+      os.mkdir("Music")
+  
+  for song_details in music:
+    files = os.listdir("Music")
+    artist = song_details['Artist(s)'].title()
+    if artist not in files:
+      os.mkdir(f"Music/{artist}")
+      
+    path = os.path.join("Music/", f"{artist}/", f"{song_details['Song']}")
+    f = open(path, "w")
+    f.close()
+    
