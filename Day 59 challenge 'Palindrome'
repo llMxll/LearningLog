@@ -1,0 +1,20 @@
+#For the purposes of this tutorial string.reverse() was not allowed
+
+reversed = []
+
+def reverse_word(word, n):
+  if n-1 == len(word):
+    return reversed
+  else:
+    reversed.append(word[len(word)-n])
+    reverse_word(word, n+1)
+
+print("Palindeome Checker\n")
+word = list(input("Input a word > "))
+
+reverse_word(word, 1)
+
+if reversed == word:
+  print("Thats a Palindrome!")
+else:
+  print("No no no.. a palindrome has the same letters backwards as foward")
