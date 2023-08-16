@@ -1,0 +1,15 @@
+import mxlibrary
+
+mxlibrary.color("This text is now cyan!", "cyan")
+
+
+### In mxlibrary ###
+def color(text, Color):
+  if Color == "purple":
+    print("\033[35m", text, end=" ")
+  if Color == "red":
+    print("\033[31m", text, end=" ")
+  if Color == "cyan":
+    print("\033[36m", text, end=" ")
+  if Color == "yellow":
+    print("\033[93m", text, end=" ")
