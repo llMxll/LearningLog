@@ -1,0 +1,63 @@
+class job:
+  name = None
+  salary = None
+  hoursWorked = None
+
+  def __init__(self, name, salary, hourseWorked):
+    self.name = name
+    self.salary = salary
+    self.hoursWorked = hourseWorked
+  
+  def show(self):
+    print(f"""Name: {self.name}
+Salary: {self.salary}
+Hours Worked: {self.hoursWorked}""")
+
+class doctor(job):
+
+  experience = None
+  speciality = None
+  
+  def __init__(self, speciality, experience):
+    self.name = "Doctor"
+    self.salary = "$ Doing nicely thank you"
+    self.hoursWorked = "50"
+    self.speciality = speciality
+    self.experience = experience
+
+  def show(self):
+    print(f"""Name: {self.name}
+Salary: {self.salary}
+Hours Worked: {self.hoursWorked}
+Speciality: {self.speciality}
+Years of experience: {self.experience}""")
+    
+class teacher(job):
+
+  subject = None
+  position = None
+  
+  def __init__(self, subject, position):
+    self.name = "$ Nowhere near enough"
+    self.salary = "All the time"
+    self.hoursWorked = "All of them"
+    self.subject = subject
+    self.position = position
+
+  def show(self):
+    print(f"""Name: {self.name}
+Salary: {self.salary}
+Hours Worked: {self.hoursWorked}
+Subject: {self.subject}
+Position: {self.position}""")
+
+job1 = job("Lawyer", "Excessive amounts", "43")
+job2 = teacher("computer science", "Classroom teacher")
+job3 = doctor("Pediatric Consultant", "7")
+
+job1.show()
+print("")
+job2.show()
+print("")
+job3.show()
+print("")
