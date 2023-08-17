@@ -1,0 +1,112 @@
+class character():
+  name = None
+  hp = None
+  mp = None
+
+  def __init__(self, name, hp, mp):
+    self.name = name
+    self.hp = hp
+    self.mp = mp
+
+  def print(self):
+    print(f"""Name:\t {self.name}
+Health:\t {self.hp}
+Magic points:\t {self.mp}
+""")
+
+class player(character):
+  lives = 3
+
+  def __init__(self, name, hp, mp):
+    self.name = name
+    self.hp = hp
+    self.mp = mp
+
+  def amIAlive(self):
+    if self.lives > 0:
+      print("Alive and kicking")
+    else:
+      print("Dead as a doornail")
+
+  def print(self):
+    print(f"""Name:\t {self.name}
+Health:\t {self.hp}
+Magic points:\t {self.mp}
+Lives:/t {self.lives}
+""")
+    
+class enemy():
+  type = None
+  str = None
+
+  def __init__(self, name, hp, mp, type, str):
+    self.name = name
+    self.hp = hp
+    self.mp = mp
+    self.type = type
+    self.str = str
+
+  def print(self):
+    print(f"""Name:\t {self.name}
+Health:\t {self.hp}
+Magic points:\t {self.mp}
+Type:\t {self.type}
+Strength:\t {self.str}
+""")
+
+class orc():
+  speed = None
+
+  def __init__(self, name, hp, mp, str, speed):
+    self.name = name
+    self.hp = hp
+    self.mp = mp
+    self.type = "Orc"
+    self.str = str
+    self.speed = speed
+
+  def print(self):
+    print(f"""Name:\t {self.name}
+Health:\t {self.hp}
+Magic points:\t {self.mp}
+Type:\t {self.type}
+Strength:\t {self.str}
+Speed\t {self.speed}
+""")
+
+class vampire():
+  night = None
+
+  def __init__(self, name, hp, mp, str, night):
+    self.name = name
+    self.hp = hp
+    self.mp = mp
+    self.type = "Vampire"
+    self.str = str
+    self.night = night
+
+  def print(self):
+    print(f"""Name:\t {self.name}
+Health:\t {self.hp}
+Magic points:\t {self.mp}
+Type:\t {self.type}
+Strength:\t {self.str}
+Night:\t {self.night}
+""")
+
+
+pc = player("Mx", 60, 40)
+vamp1 = vampire("Dracula", 80, 40, 30, True)
+vamp2 = vampire("Mrs dracula", 80, 40, 30, True)
+orc1 = orc("Graa", 40, 10, 30, 25)
+orc2 = orc("Brrrr", 40, 5, 40, 20)
+orc3 = orc("Mughh", 40, 0, 35, 15)
+
+pc.print()
+vamp1.print()
+vamp2.print()
+orc1.print()
+orc2.print()
+orc3.print()
+pc.amIAlive()
+
