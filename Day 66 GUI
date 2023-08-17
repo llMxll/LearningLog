@@ -1,0 +1,53 @@
+import tkinter as tk
+
+window = tk.Tk()
+window.title("Calculator") 
+window.geometry("200x200") 
+label = 0
+
+def updateLabel(input):
+  try:
+    global label
+    label += input
+    hello["text"] = label
+  except:
+    pass
+  
+hello = tk.Label(text = label)
+hello.grid(row=0, column=1)
+
+butRow = 1
+butColumn = 0
+num = 1
+
+while True:
+  button = tk.Button(text = str(num), command = updateLabel(num))
+  button.grid(row=butRow, column=butColumn)
+  num += 1
+  butColumn += 1
+  if butColumn == 3:
+    butRow += 1
+    butColumn = 0
+  if butRow == 4:
+    break
+
+button = tk.Button(text = "0", command = updateLabel(0))
+button.grid(row=4, column=1)
+
+button = tk.Button(text = "=", command = updateLabel("evaluate"))
+button.grid(row=4, column=3)
+
+button = tk.Button(text = "+", command = updateLabel("+"))
+button.grid(row=2, column=3)
+
+button = tk.Button(text = "-", command = updateLabel("-"))
+button.grid(row=2, column=4)
+
+button = tk.Button(text = "*", command = updateLabel("*"))
+button.grid(row=3, column=3)
+
+button = tk.Button(text = "/", command = updateLabel("/"))
+button.grid(row=3, column=4)
+
+
+
