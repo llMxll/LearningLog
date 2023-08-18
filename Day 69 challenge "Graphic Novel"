@@ -1,0 +1,93 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+
+window = tk.Tk()
+window.title("Visual Novel") 
+window.geometry("400x300")
+page = 1
+
+def page2():
+  canvas.itemconfig(container, image = imageA)
+  label.config(text = "It bought us time but they are still coming")
+  buttonOne.config(text="Use astoroids for cover and fight back")
+  buttonTwo.config(text="Hide and hope they dont find you")
+
+def page3():
+  canvas.itemconfig(container, image = imageP)
+  label.config(text = "We got there, but they are right on our tail")
+  buttonOne.config(text="Land and hide")
+  buttonTwo.config(text="Fly fast and low to ditch them inbetween the towers")
+
+def page4():
+  canvas.itemconfig(container, image = imageS)
+  label.config(text = "They blow you into little bits")
+  buttonOne.config(text="Restart")
+  buttonTwo.pack_forget()
+
+def page5():
+  canvas.itemconfig(container, image = imageS)
+  label.config(text = "As you slow down they blow you into little bits")
+  buttonOne.config(text="Restart")
+  buttonTwo.pack_forget()
+
+def page6():
+  canvas.itemconfig(container, image = imageOne)
+  label.config(text = "You escape to see another day. YOU WIN")
+  buttonOne.config(text="Restart")
+  buttonTwo.pack_forget()
+
+def page1():
+  canvas.itemconfig(container, image = imageOne)
+  label.config(text = "Incoming enemy ships!")
+  buttonOne.config(text="hide in the astoroid belt")
+  buttonTwo.pack()
+  buttonTwo.config(text="flee to nearby planet")
+
+
+def pagechange(number):
+  global page
+  print(f"test {page}, {number}")
+  if page == 0 and number == 1:
+    page1()
+    page = 1
+  elif page == 1 and number == 1:
+    page2()
+    page = 2
+  elif page == 2 and number == 1:
+    page4()
+    page = 0
+  elif page == 2 and number == 2:
+    page6()
+    page = 0
+  elif page == 1 and number == 2:
+    page3()
+    page = 3
+  elif page == 3 and number == 1:
+    page5()
+    page = 0
+  elif page == 3 and number == 2:
+    page6()
+    page = 0
+  
+
+canvas = tk.Canvas(window, width = 300, height=150) 
+canvas.pack()
+
+imageOne = ImageTk.PhotoImage(Image.open("image 1.jpeg")) 
+imageA = ImageTk.PhotoImage(Image.open("astoroids.jpg")) 
+imageP = ImageTk.PhotoImage(Image.open("planet.jpg")) 
+imageS = ImageTk.PhotoImage(Image.open("Skull.jpg"))
+
+container = canvas.create_image(150,1,image=imageOne)
+
+label = tk.Label(text = "Incoming enemy ships!")
+label.pack()
+
+buttonOne = tk.Button(text = "hide in the astoroid belt", command = lambda: pagechange(1))
+buttonOne.pack()
+
+buttonTwo = tk.Button(text = "flee to nearby planet", command = lambda: pagechange(2))
+buttonTwo.pack()
+
+
+
