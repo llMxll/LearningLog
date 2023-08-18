@@ -1,0 +1,43 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+
+window = tk.Tk()
+window.title("Guess Who") 
+window.geometry("300x200")
+
+def changeImage():
+  name = text.get("1.0", "end").strip().capitalize()
+  if name == "Charlotte":
+    canvas.itemconfig(container, image = imageC) 
+  elif name == "Gerald":
+    canvas.itemconfig(container, image = imageG)
+  elif name == "Katie":
+    canvas.itemconfig(container, image = imageK)
+  elif name == "Mo":
+    canvas.itemconfig(container, image = imageM)
+  else:
+    hello["text"] = "Unable to find this user"
+    
+hello = tk.Label(text = "Guess Who?") 
+hello.pack() 
+
+text = tk.Text(window, width = 300, height = 1)
+text.pack()
+
+button = tk.Button(text = "Click me!", command=changeImage)
+button.pack()
+
+canvas = tk.Canvas(window, width = 300, height=150) 
+canvas.pack()
+
+imageC = ImageTk.PhotoImage(Image.open("charlotte.jpg")) 
+imageG = ImageTk.PhotoImage(Image.open("gerald.jpg")) 
+imageK = ImageTk.PhotoImage(Image.open("katie.jpg")) 
+imageM = ImageTk.PhotoImage(Image.open("mo.jpg"))
+
+image = None
+container = canvas.create_image(150,1,image=image)
+
+tk.mainloop()
+
+
