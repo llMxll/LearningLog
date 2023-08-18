@@ -3,15 +3,21 @@ import tkinter as tk
 window = tk.Tk()
 window.title("Calculator") 
 window.geometry("200x200") 
-label = 0
+label = "0"
 
 def updateLabel(input):
-  try:
-    global label
-    label += input
-    hello["text"] = label
-  except:
-    pass
+  global label
+  
+  if input == "evaluate":
+    try:
+      label = str(eval(label))
+    except:
+      label = "Error"
+  else:
+    if label == "0" or label == "Error":
+      label = ""
+    label += str(input)
+  hello["text"] = label
   
 hello = tk.Label(text = label)
 hello.grid(row=0, column=1)
@@ -20,33 +26,42 @@ butRow = 1
 butColumn = 0
 num = 1
 
-while True:
-  button = tk.Button(text = str(num), command = updateLabel(num))
-  button.grid(row=butRow, column=butColumn)
-  num += 1
-  butColumn += 1
-  if butColumn == 3:
-    butRow += 1
-    butColumn = 0
-  if butRow == 4:
-    break
+one = tk.Button(text="1", command= lambda: updateLabel(1))
+one.grid(row=1,column=0)
+two = tk.Button(text="2", command= lambda: updateLabel(2))
+two.grid(row=1,column=1)
+three = tk.Button(text="3", command= lambda: updateLabel(3))
+three.grid(row=1,column=2)
+four = tk.Button(text="4", command= lambda: updateLabel(4))
+four.grid(row=2,column=0)
+five = tk.Button(text="5", command= lambda: updateLabel(5))
+five.grid(row=2,column=1)
+six = tk.Button(text="6", command= lambda: updateLabel(6))
+six.grid(row=2,column=2)
+seven = tk.Button(text="7", command= lambda: updateLabel(7))
+seven.grid(row=3,column=0)
+eight = tk.Button(text="8", command= lambda: updateLabel(8))
+eight.grid(row=3,column=1)
+nine = tk.Button(text="9", command= lambda: updateLabel(9))
+nine.grid(row=3,column=2)
 
-button = tk.Button(text = "0", command = updateLabel(0))
+
+button = tk.Button(text = "0", command = lambda: updateLabel(0))
 button.grid(row=4, column=1)
 
-button = tk.Button(text = "=", command = updateLabel("evaluate"))
+button = tk.Button(text = "=", command = lambda: updateLabel("evaluate"))
 button.grid(row=4, column=3)
 
-button = tk.Button(text = "+", command = updateLabel("+"))
+button = tk.Button(text = "+", command = lambda: updateLabel("+"))
 button.grid(row=2, column=3)
 
-button = tk.Button(text = "-", command = updateLabel("-"))
+button = tk.Button(text = "-", command = lambda: updateLabel("-"))
 button.grid(row=2, column=4)
 
-button = tk.Button(text = "*", command = updateLabel("*"))
+button = tk.Button(text = "*", command = lambda: updateLabel("*"))
 button.grid(row=3, column=3)
 
-button = tk.Button(text = "/", command = updateLabel("/"))
+button = tk.Button(text = "/", command = lambda: updateLabel("/"))
 button.grid(row=3, column=4)
 
 
