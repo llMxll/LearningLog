@@ -1,0 +1,53 @@
+from replit import db
+import os, time, random
+
+
+def add():
+  newuser = input("\nChoose a username > ")
+  if newuser in db:
+    print("\nthat username is taken")
+  else:
+    newpassword = input("Choose a password > ")
+
+    salt = random.randint(1000, 9999)
+    salted = f"{newpassword}{salt}"
+    hashed = hash(salted)
+    
+    db[newuser] = {"hashed":hashed, "salt":salt}
+    print("User added")
+
+def login():
+  user = input("\nUser: > ")
+  if user not in db:
+    print("\nno user of that name")
+  else:
+    password = input("\npassword > ")
+    salt = db[user]["salt"]
+    password = f"{password}{salt}"
+    hashed = hash(password)
+
+    if hashed == db[user]["hashed"]:
+      print("\nLogin successful")
+    else:
+      print("Nice try Haczor")
+    
+  
+
+while True:
+  print("""Login System
+  
+  1. Add user
+  2. Login
+  
+  Select an option (1/2)""")
+  menu = input("> ")
+  
+  if menu == "1":
+    add()
+  elif menu == "2":
+    login()
+  else:
+    print("\n please select 1 or 2")
+
+  time.sleep(2)
+  os.system("clear")
