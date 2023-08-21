@@ -1,0 +1,80 @@
+from replit import db
+import os, datetime, random, time
+
+
+def login():
+  if len(db)>0:
+    user = input("Username: > ")
+    if user not in db:
+      print("This is not your diary")
+      time.sleep(2)
+      exit()
+    else:
+      password = input("password: > ")
+      salt = db[user]["salt"]
+      password = f"{password}{salt}"
+      password = hash(password)
+
+      if password != db[user]["password"]:
+        print("Nice try HAckzor")
+        time.sleep(2)
+        exit()
+      else:
+        print("Logging in...")
+        time.sleep(2)
+
+  else:
+    newUser = input("Make a username > ")
+    newPassword = input("Make a password > ")
+    salt = random.randint(1000, 9999)
+    saltedPassword = f"{newPassword}{salt}"
+    hashedPassword = hash(saltedPassword)
+    db[newUser] = {"password": hashedPassword, "salt": salt}
+
+  os.system("clear")
+
+
+def add():
+  entry = input("\nWrite an entry > ")
+  timeStamp = datetime.datetime.now()
+  db[f"entry {timeStamp}"] = entry
+
+
+def view():
+  entries = db.prefix("entry")
+  entries = entries[::-1]
+  counter = 0
+  for i in entries:
+    print(f"\n{i}: \n{db[i]}")
+    counter += 1
+    if counter == 3:
+      menu = input("Would you like to see more y/n > ")
+      if menu != "y":
+        break
+    if counter == len(entries):
+      input("\n End of entries, press enter to continue >")
+
+
+print("My Diary\n")
+
+login = login()
+
+while True:
+  print("""My Diary 
+
+  1. Add an entry
+  2. View entries
+  
+  Select a option with 1 or 2 or exit with any other key""")
+  menu = input("> ")
+
+  if menu == "1":
+    add()
+
+  elif menu == "2":
+    view()
+
+  else:
+    exit()
+
+  os.system("clear")
