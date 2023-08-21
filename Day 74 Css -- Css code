@@ -1,0 +1,42 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #030202;
+}
+
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  
+}
+
+ h1 {
+  background-color: #413c3a;
+  text-align: center;
+   grid-column-start: 1;
+   grid-column-end: 2;
+   color: red;
+}
+
+.entry {
+  background-color: #1d393f;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  text-decoration: underline ;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+p {
+  color: white;
+  margin: 1rem;
+}
