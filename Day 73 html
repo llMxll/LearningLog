@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Mx's Portfolio</title>
+</head>
+
+<body>
+  <h1>Mx's Portfolio </h1>
+  <h2>Day 72 Diary with salt and hash protection</h2>
+  <p>This is a journal that stores strings in a database with the date it was added and recalls them. During the first
+    use the user will make a username and password required for future log ins, the password is salted and hashed.</p>
+  <a href="https://replit.com/@MichaelWills2/Day72100Days"><img src="Images/Diary.png"></a>
+
+
+  <h2>Day 69 Graphic novel</h2>
+  <p>A very brief choose you own adventure that features use of Tkinter</p>
+  <a href="https://replit.com/@MichaelWills2/Day69100Days"><img src="Images/Novel.png"></a>
+
+  <h2>Day 65 Characters</h2>
+  <p>Some code made while practicing classes. This spits out some pre-determined characters.</p>
+  <a href="https://replit.com/@MichaelWills2/Day65100Days"><img src="Images/Characters.png"></a>
+
+
+  <h2>Day 59 Palindrome</h2>
+  <p>This code takes a word given by the user and reverses it to check if its a palindrome -- as a tutorial challenge I
+    was not allowed to use the reverse function to force me to practice recalling functions</p>
+  <a href="https://replit.com/@MichaelWills2/Day59100Days"><img src="Images/Palindrome.png"></a>
+
+  <h2>Day 56 Music organiser</h2>
+  <p>This code organises a list of music and creates folders for each song inside a folder for each artisrt.</p>
+  <a href="https://replit.com/@MichaelWills2/Day56100Days"><img src="Images/Music.png"></a>
+
+</body>
+
+</html>
