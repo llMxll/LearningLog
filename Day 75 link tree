@@ -1,0 +1,43 @@
+HTML ------------------------------
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Social page</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+   <img src="yulBrynner.jpg", width="40%">
+  
+  <h1> Not actually me</h1>
+  <p> because I dont do social media much</p>
+
+  <a href="https://twitter.com/?lang=en"><h4>Twitter generic link</h4></a>
+  <a href="https://www.facebook.com/"><h4>facebook generic link</h4></a>
+  
+  <script src="script.js"></script>
+
+  
+  
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+</body>
+
+</html>
+
+
+CSS---------------------------------------
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #000042;
+  color: white;
+  text-align: center;
+}
+
+h4 {
+  color: #d447d7;
+}
