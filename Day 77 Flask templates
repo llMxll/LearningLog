@@ -1,0 +1,72 @@
+Python code -------------------------------
+from flask import Flask
+
+app = Flask(__name__, static_url_path="/static")
+
+
+@app.route('/')
+def index():
+    title = "Home"
+    date = ""
+    text = """<a href = https://day77100days.michaelwills2.repl.co/entry1>Entry 1</a><br>
+<a href = https://day77100days.michaelwills2.repl.co/entry2>Entry 2</a>
+  """
+    page = ""
+    f = open("template/temp.html", "r")
+    page = f.read()
+    f.close()
+    page = page.replace("{title}", title)
+    page = page.replace("{date}", date)
+    page = page.replace("{text}", text)
+
+    return page
+
+@app.route('/entry1')
+def entry1():
+    title = "First entry"
+    date = "23rd August 2023"
+    text = """This is the first entry
+  <br>
+  <a href = https://day77100days.michaelwills2.repl.co/>Home</a>"""
+    page = ""
+    f = open("template/temp.html", "r")
+    page = f.read()
+    f.close()
+    page = page.replace("{title}", title)
+    page = page.replace("{date}", date)
+    page = page.replace("{text}", text)
+    return page
+  
+@app.route('/entry2')
+def entry2():
+    title = "Second entry"
+    date = "23rd August 2023"
+    text = """This is the Second entry
+  <br>
+  <a href = https://day77100days.michaelwills2.repl.co/>Home</a>"""
+    page = ""
+    f = open("template/temp.html", "r")
+    page = f.read()
+    f.close()
+    page = page.replace("{title}", title)
+    page = page.replace("{date}", date)
+    page = page.replace("{text}", text)
+    return page
+
+app.run(host='0.0.0.0', port=81)
+
+Html code ---------------------------------------
+<html>
+  <head>
+    <title>{title}</title>
+  </head>
+  <body>
+    
+    <h1>{title}</h1>
+    <hr>
+  
+    <h3>{date}</h3>
+  
+    <p>{text}</p>
+  </body>
+</html>
