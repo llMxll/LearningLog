@@ -1,0 +1,17 @@
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/language', methods=["GET"])
+def language():
+  get = request.args
+  if get["lang"] == "phillipino":
+    return "Kamusta?"
+  
+  return "How you doing?"
+
+@app.route('/')
+def index():
+  return "put /language?lang=phillipino after the current url"
+  
+app.run(host="0.0.0.0", port=81)
