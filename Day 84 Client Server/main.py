@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/login', methods=["POST"])
 def login():
-    user = request.form
+    user = request.form.lower()
     username = user["username"]
     try:
         if user["username"].lower() in db:
