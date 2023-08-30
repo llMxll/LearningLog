@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link href="static/main.css" rel="stylesheet" type="text/css"/>
+</head>
+
+  
+<body>
+  <div>
+    <h2>Mx's Blog</h2>
+    
+    <form method = "post" action = {login_logout_function}>
+      <button value=submit>{login_logout_button}</button>
+    </form>
+    
+    <form method = "post" action = '/add_entry'>
+    {entry_creation_form}
+    </form>
+      
+    
+    <hr>
+    
+    {content}
+
+    <hr>
+  </div>
+</body>
+</html>
