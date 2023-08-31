@@ -1,0 +1,19 @@
+import requests, json
+
+for i in range (1, 10):
+  results = requests.get("https://randomuser.me/api/")
+  importItem = results.json()
+  
+  if results.status_code != 200:
+    print("Error")
+  
+  #print(json.dumps(importItem, indent=2)) #prints api library
+  
+  for result in importItem["results"]:
+    name = f"""{result["name"]["first"]} {result["name"]["last"]}"""
+    image = result["picture"]["large"]
+    picture= requests.get(image)
+    
+    f = open(f"images/{name}.jpg", "wb")
+    f.write(picture.content)
+    f.close()
