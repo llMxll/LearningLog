@@ -5,7 +5,7 @@ import os
 app = Flask(__name__, static_url_path="/static")
 app.secret_key = os.environ['secretKey']
 
-adminUserId = "25124031" #Change this to your ID
+adminUserId = "" 
 
 def getBlogs():
   entry = ""
