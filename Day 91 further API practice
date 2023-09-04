@@ -1,0 +1,44 @@
+import json, requests, time, os
+from replit import db
+
+def get_random_joke():
+  importJoke = requests.get("https://icanhazdadjoke.com/", headers = {"Accept": "application/json"})
+  importJoke = importJoke.json()
+  print(importJoke["joke"])
+  return importJoke["id"]
+
+def save_joke(jokeId):
+  db[jokeId]=""
+  num_saved = len(db)
+  print(f"""\nJoke saved...
+  {num_saved} jokes(s) currently stored""")
+  time.sleep(2)
+
+def load_jokes():
+  for joke in db:
+    importJoke = requests.get(f"https://icanhazdadjoke.com/j/{joke}", headers = {"Accept": "application/json"})
+    importJoke = importJoke.json()
+    print(f'\n\n{importJoke["joke"]}')
+    time.sleep(2)
+
+while True:
+  print("JOKE GENERATOR! \n\n")
+  
+  jokeId = get_random_joke()
+  
+  print("\n(s)ave joke, (l)oad old jokes, (n)ew joke")
+  menu_input = input("> ").lower()
+  if menu_input == "s":
+    save_joke(jokeId)
+    input("\nPress enter to continue > ")
+  elif menu_input == "l":
+    load_jokes()
+    input("\nPress enter to continue > ")
+  elif menu_input == "n":
+    os.system("clear")
+    continue
+  else:
+    print("\n invalid selection")
+    
+  time.sleep(1)
+  os.system("clear")
