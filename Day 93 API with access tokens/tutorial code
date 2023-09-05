@@ -1,0 +1,33 @@
+import requests, json, os
+from requests.auth import HTTPBasicAuth
+
+artist = input("Artist > ")
+
+# Get ID and secret from website
+clientID = os.environ['CLIENT_ID']
+clientSecret = os.environ['CLIENT_SECRET']
+
+# Get access token
+url = "https://accounts.spotify.com/api/token"
+data = {"grant_type":"client_credentials"}
+auth = HTTPBasicAuth(clientID, clientSecret)
+response = requests.post(url, data=data, auth=auth)
+accessToken = response.json()["access_token"]
+
+# To print token for some sites...
+# print(response.ok)
+# print(response.json())
+# print(response.status_code)
+
+#Search parameters -- mostly copied from website
+url = "https://api.spotify.com/v1/search"
+headers = {'Authorization': f'Bearer {accessToken}'}
+search = f"?q={artist}&type=track&limit=5"
+fullURL = f"{url}{search}"
+
+#Search
+response = requests.get(fullURL, headers=headers)
+data = response.json()
+for track in data["tracks"]["items"]:
+  print(track["name"])
+  print(track["preview_url"])
