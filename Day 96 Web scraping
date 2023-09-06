@@ -1,0 +1,24 @@
+import requests
+from bs4 import BeautifulSoup
+
+page_no = 1
+
+while True:
+  matches = 0
+  url = f"https://news.ycombinator.com/news?p={page_no}"
+  response = requests.get(url)
+  html = response.text
+  soup = BeautifulSoup(html, 'html.parser')
+  headings = soup.find_all("span", {"class":"titleline"})
+  
+  for heading in headings:
+    #print(i.text)
+    if "python" in heading.text.lower() or "replit" in heading.text.lower():
+      print("")
+      print("heading.text")
+      link = heading.find_all("a")
+      print(link[0]["href"])
+      matches += 1
+  print(f"\nPage {page_no} had {matches} match(es), press enter to scrape next page")
+  input("> ")
+  page_no += 1
