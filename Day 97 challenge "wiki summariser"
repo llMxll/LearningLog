@@ -1,0 +1,34 @@
+import requests, os, openai
+from bs4 import BeautifulSoup
+
+url = input("Paste the wiki URL")
+
+response = requests.get(url)
+html = response.text
+
+soup = BeautifulSoup(html, "html.parser")
+
+text = ""
+
+article = soup.find_all("div", {"class": "mw-parser-output"})
+
+for articles in article:
+  content = article.find_all("p")
+
+
+for p in content:
+  text += p.text
+
+openai.organisation = os.environ['organisationID']
+openai.api_key = os.environ['openai']
+openai.Model.list()
+
+prompt = f"Summarise the text below in no more than 3 paragraphs. {text}"
+
+response = openai.Completion.create(model="text-davinci-002", prompt=prompt, temperature=0, max_tokens=150)
+
+refs = soup.find_all("ol", {"class": "references"})
+for ref in refs:
+  print(ref.texts.replace("^",""))
+
+print(response["choices"][0]["text"].strip())
