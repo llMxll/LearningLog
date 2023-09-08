@@ -1,0 +1,61 @@
+import requests, time, smtplib, schedule
+from replit import db
+from bs4 import BeautifulSoup
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# password = os.environ['mailPassword']
+# username = os.environ['mailUsername']
+
+search = ["Changelog", "Work"]
+
+# Reset seen items 
+# for i in db:
+#   del db[i]
+
+
+def printMe():
+  response = requests.get("https://replit.com/community-hub").text
+  
+  web_page = BeautifulSoup(response, "html.parser")
+  section = web_page.find_all("div",{"class": "css-hakv9k"})
+
+  replit_news = ""
+  for i in section: 
+    titles = i.find_all("a",{"class": "css-epm014"})
+    for title in titles:
+      for search_item in search:
+        if search_item in title.text and title.text not in db.keys():
+          replit_news += f"{title.text}\n{title['href']}\n\n"
+          db[title.text] = ""
+ 
+  print(replit_news)
+  print("email sending...\n")
+  #sendMail(replit_news)
+
+def sendMail(replit_news):
+  email = "Replit news" 
+  server = "smtp.gmail.com" 
+  port = 587 
+  s = smtplib.SMTP(host = server, port = port) 
+  s.starttls() 
+  s.login(username, password) 
+
+  msg = MIMEMultipart() 
+  #msg['To'] = "recipient@email.com" 
+  msg['From'] = username 
+  msg['Subject'] = replit_news
+  msg.attach(MIMEText(email, 'html'))
+
+  s.send_message(msg) 
+  del msg
+  print("email sent\n")
+
+
+printMe()
+schedule.every(6).hours.do(printMe) 
+
+while True:
+  schedule.run_pending()
+  time.sleep(2)
+
