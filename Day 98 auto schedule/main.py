@@ -29,7 +29,7 @@ def printMe():
     #sendMail(quote_to_print)
 
 def sendMail(quote_to_print):
-  email = "Don't forget to take a break!" 
+  email = "Quote of the day" 
   server = "smtp.gmail.com" 
   port = 587 
   s = smtplib.SMTP(host = server, port = port) 
