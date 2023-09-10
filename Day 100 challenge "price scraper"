@@ -1,0 +1,109 @@
+from bs4 import BeautifulSoup
+import requests, smtplib, time, schedule, os
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# password = os.environ['mailPassword']
+# username = os.environ['mailUsername']
+items = {}
+website_to_scrape = "https://www.stuffedwithplushtoys.com/animals/"
+
+def set_prices():
+  try:
+    f = open("save", "r")
+    items = eval(f.read())
+    f.close()
+    if len(items) > 0:
+      print("\n---- Current wish list -----\n")
+      for i in items:
+        print(f"{i.capitalize()} at a lower price than ${items[i]['desired_price']}")
+    else:
+      print("\nNo saved prices")
+  except:
+    items = {}
+    print("\nNo saved prices")
+
+  item_name = input("\nName of item to add/remove: > ").lower()
+
+  if item_name not in items:
+    item_desired_price = input("Acceptable price: > $")
+    items[item_name] = {"desired_price": item_desired_price, "current_price": ""}
+    
+    print("\nItem added")
+  else:
+    menu = input("\nThat item exists, would you like to remove it (y/n) > ")
+    if menu == "y":
+      items.pop(item_name)
+      print("\nItem removed")
+
+  f = open("save", "w")
+  f.write(str(items))
+  f.close()
+
+
+def scrape_website():
+  email_content = ""
+  
+  f = open("save", "r")
+  items = eval(f.read())
+  f.close()
+  
+  website = website_to_scrape
+  response = requests.get(website).text
+  website = BeautifulSoup(response, "html.parser")
+  items_on_website = website.find_all("div", {"class": "thumbnail"})
+
+  print("\n----Items found----")
+  for site_item in items_on_website:
+    anchors = site_item.find_all("a")
+    name = anchors[1].text.lower()
+    for search_item in items:
+      if search_item in name:
+        price = site_item.find_all("div", {"class": "price"})
+        price = price[0].text.strip().replace("$", "")
+
+        if float(items[search_item]["desired_price"]) >= float(price):
+          link = anchors[0]['href']
+          
+          email_content += f"\n{name.capitalize()} for ${price}\n{link}\n"
+          print(email_content)
+          #send_mail(email_content)
+
+def send_mail(email_content):
+  email = email_content
+  server = "smtp.gmail.com" 
+  port = 587 
+  s = smtplib.SMTP(host = server, port = port) 
+  s.starttls() 
+  s.login(username, password) 
+
+  msg = MIMEMultipart() 
+  #msg['To'] = "recipient@email.com" 
+  msg['From'] = username 
+  msg['Subject'] = "price matched search"
+  
+  msg.attach(MIMEText(email, 'html'))
+
+  s.send_message(msg) 
+  del msg
+  print("\nemail sent")
+
+
+while True:
+  
+  print("""Price Scraper\n\n(a)dd or delete items to search for\n(r)un auto email""")
+  
+  menu = input("> ").lower()
+  if menu == "a":
+    set_prices()
+  elif menu == "r":
+    # scrape_website()
+    schedule.every(24).hours.do(scrape_website) 
+    while True:
+      schedule.run_pending()
+      time.sleep(10)
+  else:
+    print("\nInvalid selection")
+
+  input("\nPress enter to continue > ")
+  os.system("clear")
