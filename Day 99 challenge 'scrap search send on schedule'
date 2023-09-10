@@ -34,7 +34,8 @@ def printMe():
   #sendMail(replit_news)
 
 def sendMail(replit_news):
-  email = "Replit news" 
+  email = replit_news
+
   server = "smtp.gmail.com" 
   port = 587 
   s = smtplib.SMTP(host = server, port = port) 
@@ -44,7 +45,7 @@ def sendMail(replit_news):
   msg = MIMEMultipart() 
   #msg['To'] = "recipient@email.com" 
   msg['From'] = username 
-  msg['Subject'] = replit_news
+  msg['Subject'] = "Replit news" 
   msg.attach(MIMEText(email, 'html'))
 
   s.send_message(msg) 
